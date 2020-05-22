@@ -1,0 +1,98 @@
+
+
+<style>
+    h1{ 
+        margin:0 auto;
+        width: 1500px;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    input[type=radio]{
+        display:none;
+    }  
+    .box{
+        margin:0 auto;
+        width:1500px;
+        overflow: hidden;
+    }
+    .inner{
+        width:1000%;
+        
+        display:table;
+    }
+    .slide{
+        width:10%;
+        height:500px;
+        display:table-cell;
+
+        background-color: black;
+        color:white;
+        text-align: center;
+        font-size: 40px;
+        line-height: 500px;
+        transition: 2s;
+    }
+
+    .inner:hover .slide{
+        height:900px;
+        line-height: 900px;
+        transition: 2s;
+    }
+</style>
+
+<div class='slider'>
+    <input type="radio" class='check1' name='name'>
+    <input type="radio" class='check2' name='name'>
+    <input type="radio" class='check3' name='name'>
+    <input type="radio" class='check4' name='name'>
+    <input type="radio" class='check5' name='name'>
+    <input type="radio" class='check6' name='name'>
+    <input type="radio" class='check7' name='name'>
+    <input type="radio" class='check8' name='name'>
+    <input type="radio" class='check9' name='name'>
+    <input type="radio" class='check10' name='name'>
+    <div class='box'>
+        <div class='inner'>
+            <div class='slide slide1'>page 1</div>
+            <div class='slide slide2'>page 2</div>
+            <div class='slide slide3'>page 3</div>
+            <div class='slide slide4'>page 4</div>
+            <div class='slide slide5'>page 5</div>
+            <div class='slide slide6'>page 6</div>
+            <div class='slide slide7'>page 7</div>
+            <div class='slide slide8'>page 8</div>
+            <div class='slide slide9'>page 9</div>
+            <div class='slide slide10'>page 10</div>
+        </div>
+    </div>
+</div>
+
+<h1><u>"Automata"</u></h1>
+
+
+<script>
+    var inner = document.querySelectorAll('.inner')
+    var inner1 = inner[0];
+    
+    var i = 0;
+
+    
+    (function looper (i) {
+        setTimeout(function(){
+        if ( i <= 9 )
+            inner1.style.transform = 'translateX(-'+1500*(i+1)+'px)';
+            inner1.style.transition = 1900 + 'ms';
+            i++
+			looper (i);
+        if( i == 10 ){
+            inner1.style.transform = 'translateX(-'+0+'px)';
+            inner1.style.transition = 1900 + 'ms';
+            i = 0;
+            looper(i);
+        }
+        },3000)
+    })(i);
+   
+
+</script>
