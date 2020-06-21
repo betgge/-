@@ -1,0 +1,307 @@
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    :root{
+      --button-color:white;
+    }
+    body{
+      margin:0;
+      background-color:rgb(34, 34, 34);
+    }
+    /* home-button */
+    .home-button{
+      background: url("{{ url_for('static', filename='home-button.svg') }}") no-repeat;
+      background-size: 40px;
+      background-position:center center;
+      width:250px;
+      height:75px;
+      line-height:75px;
+      position:fixed;
+      bottom:25px;
+      text-align:center;
+      font-size:50px;
+      left:50%;
+      transform: translateX(-50%);
+      color:rgb(34, 34, 34);
+      background-color:white;
+      border-radius:40px;
+      z-index:3;
+    }
+    .home-button:hover{
+      opacity:0.9;
+    }
+
+    /* button */
+    .button-wrapper{
+      position:fixed;
+      top:0;
+      width:100%;
+      height:90px;
+      overflow-x: auto;
+      z-index:3;
+    }
+    .button-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+    }
+    .button-class{
+      width:2000px;
+      height:90px;
+      background-color:rgb(34, 34, 34);
+      /* box-shadow:0 0 50px 0 gray; */
+      /* border-bottom-right-radius:15px;
+      border-bottom-left-radius:15px; */
+      /* border-radius:35px; */
+      padding:20px 30px 20px 30px;
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:15px;
+      box-sizing:border-box;
+    }
+    .button-class a{
+      text-align:center;
+    }
+    .button{
+      height:50px;
+      line-height:30px;
+      color:var(--button-color);
+      border: 2px solid white;
+      border-radius:50px;
+      padding:10px;
+      margin:0;
+      box-sizing:border-box;
+      background-color:rgb(34, 34, 34);
+    }
+    .button:hover{
+      background-color:var(--button-color);
+      color:rgb(34, 34, 34);
+    }
+    a{ 
+      text-decoration:none;
+    }
+
+    /* article */
+    .css-article{
+      background-color:white;
+      border-radius:15px;
+      position: absolute;
+      width:100%;
+      padding:0;
+      z-index:2;
+      margin-top:100px;
+      color: rgba(0,0,0,1);
+      /* box-shadow:0 0 50px 0 rgb(186, 186, 186); */
+    }
+    /* .js-article:hover{
+      background-color:rgb(34,34,34);
+      color:white;
+    } */
+    img{
+      width:100%;
+    }
+    /* title */
+    .title{
+      font-size:150px;
+      text-align:center;
+      width:100%;
+    }
+    /* list */
+    /* .list{
+      width:100%;
+    }
+    .list dl{
+      width:90%;
+      margin: 130px 0 0 0 !important;
+      padding:5%;
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:25px; */
+      /* box-shadow:0 0 50px -10px rgb(186, 186, 186); */
+      /* border-top:solid black 1px; */
+    /* }
+    .list dt{
+      margin-bottom:20px;
+    }
+    .list dt:nth-last-child(1){
+      margin-bottom:0px;
+    }
+    .list dt:hover{
+      text-decoration:underline;
+    } */
+    @media(max-width:750px){
+      /* .list dl{
+        grid-template-columns:repeat(2,1fr);
+      } */
+      .home-button{
+        background-size: 20px;
+        width: 150px;
+        height:50px;
+        line-height:50px;
+      }
+      .button-wrapper{
+        height:50px;
+      }
+      .button-class{
+        width:1000px;
+        height:50px;
+        padding:10px 30px 10px 30px;
+      }
+      .button{
+        height:30px;
+        line-height:10px;
+      }
+      .css-article{
+        margin-top:60px;
+      }
+
+    }
+    /* @media all and (max-width: 1000px) and (min-width: 750px){
+      .list dl{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+    @media all and (max-width:1250px) and (min-width:1000px){
+      .list dl{
+        grid-template-columns:repeat(4,1fr);
+      }
+    }
+    @media all and (max-width:1500px) and (min-width:1250px){
+      .list dl{
+        grid-template-columns:repeat(5,1fr);
+      }
+    }
+    @media all and (max-width:1750px) and (min-width:1500px){
+      .list dl{
+        grid-template-columns:repeat(6,1fr);
+      }
+    }
+    @media all and (min-width:1750px){
+      .list dl{
+        grid-template-columns:repeat(7,1fr);
+      }
+    } */
+    </style>
+</head>
+<body>
+
+  <a href='/'>
+  <div class='home-button'></div>
+  </a>
+  <section class='button-wrapper'>
+  <section class='button-class'>
+    <a href="/"><p class='button' style='color:rgb(34,34,34);background-color:white;'>홈</p></a>
+   {% for nameTag in nameTag %}
+      <a href="/select/?press={{nameTag.key}}&name={{nameTag.name}}"><p class='button'>{{nameTag.name}}</p></a>
+    {% endfor %}
+    {% for nameTag in nameTag %}
+      <a href="/select/?press={{nameTag.key}}&name={{nameTag.name}}"><p class='button'>{{nameTag.name}}</p></a>
+    {% endfor %}
+    {% for nameTag in nameTag %}
+      <a href="/select/?press={{nameTag.key}}&name={{nameTag.name}}"><p class='button'>{{nameTag.name}}</p></a>
+    {% endfor %}
+  </section>
+  </section>
+
+  {% for key,value in db.items() %}
+    <!-- <section class='list'>
+      <dl>
+      {% for news in value %}
+      <dt>
+        <strong>{{news.title}}</strong>
+        <p>{{news.date}}</p>
+      </dt>
+      {% endfor%}
+    </dl>
+    </section> -->
+    <!-- <h1 class='title'>"{{key}}"</h1> -->
+    <section class='js-container'>
+      <article class='js-article css-article js-article{{key}}'>
+          <h1  style=' word-break:break-all;padding:20px ;font-size:100px;margin-top: 200px; color:rgb(34, 34, 34);'>{{key}}</h1>
+          <h1  style='padding:20px;font-size:50px;margin-bottom:200px;color:rgb(34, 34, 34);'>{{today}}</h1>
+          <span style='margin:0;position:absolute; padding:5px;text-align:left; width:90%;color:white;'>{{today}}</span>
+      </article>
+        {% for news in value %}
+        <a href='{{news.url}}' target='_blank'>
+          <article class='js-article css-article js-article{{key}}'>
+            <!-- style="background-image: url('{{news.img_url}}');background-repeat: no-repeat;background-size: cover;background-position:center center;" -->
+            <h1  style='padding:20px ;'>{{news.title}}</h1>
+            <p  style='padding:20px ;'>{{news.desc}}</p>
+            <p  style='padding:20px ;'>{{news.date}}</p>
+            <span style='margin:0;color:white;position:absolute; padding:5px;text-align:left; width:90%;'>{{news.title}}</span>
+          </article>
+        </a>
+        {% endfor %}  
+    </section>
+  {% endfor %}  
+
+      <script>
+
+    const container_list = document.querySelectorAll(".js-container");
+
+    function grid_all(container,num,list){
+      let article = document.querySelectorAll(`.js-article${num}`);
+      function grid(list){
+      let imgStack = list;
+      let colWidth = document.querySelectorAll(`.js-article`)[1].scrollWidth +10 ;
+      for(let i = 0; i < article.length; i++){
+        let minIndex = imgStack.indexOf(Math.min.apply(0, imgStack));
+        let x = colWidth * minIndex;
+        let y = imgStack[minIndex];
+        imgStack[minIndex] += (article[i].scrollHeight + 25);
+        article[i].style.transform = `translateX(${x}px) translateY(${y}px)`;
+        if(i === article.length - 1) {
+          container.style.height = `${Math.max.apply(0, imgStack)}px`;
+          container.style.width = `${imgStack.length*colWidth-10}px`
+          container.style.margin = `${0} auto`
+          // document.querySelector('.button-class').style.width = `${imgStack.length*colWidth-15}px`
+          // document.querySelector('.button-class').style.margin = `${0} auto`
+          // document.querySelector(".header").style.width = `${imgStack.length*colWidth-10}px`;
+          // document.querySelector(".header").style.margin = `${0} auto`;
+        }
+      }
+    }
+
+    grid([0,0,0,0,0,0,0])
+
+    function resizeArticle(article,width,list){
+        container.style.width = `${100}%`;
+        for(let i = 0;i < article.length;i++){
+            article[i].style.width = `${width}%`;
+        }
+        grid(list);
+        container.style.margin = `${0} auto`
+    }
+
+    function mediaQ(){
+      if(window.matchMedia("(max-width: 750px)").matches){
+        resizeArticle(article,90,[0])
+      }else if(window.matchMedia("all and (max-width: 1000px) and (min-width: 750px)").matches){
+        resizeArticle(article,30.5,[0,0,0])
+      }else if(window.matchMedia("all and (max-width:1250px) and (min-width:1000px)").matches){
+        resizeArticle(article,23,[0,0,0,0])
+      }else if(window.matchMedia("all and (max-width:1500px) and (min-width:1250px)").matches){
+        resizeArticle(article,18,[0,0,0,0,0])
+      }else if(window.matchMedia("all and (max-width:1750px) and (min-width:1500px)").matches){
+        resizeArticle(article,15.5,[0,0,0,0,0,0])
+      }else{
+          resizeArticle(article,13.5,[0,0,0,0,0,0,0])
+      }
+    }
+    
+    mediaQ();
+    window.addEventListener('resize',mediaQ);
+    }
+
+    grid_all(container_list[0],'MK_NEWS')
+    grid_all(container_list[1],'HK_NEWS')
+    
+    </script>
+</body>
+</html>
